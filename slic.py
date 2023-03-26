@@ -71,16 +71,11 @@ class Slic:
         :return: None
         """
         init_grid = np.mgrid[0: self.shape[0]: self.s, 0: self.shape[1]: self.s].T
-        init_grid = init_grid.astype(int)
-
-        init_grid = {tuple(x) for x in list(init_grid.reshape(-1, 2))}  # convert to set for
+        init_grid = init_grid.reshape(-1, 2).astype(int)
 
         # regular grid init
-        for p in np.nditer(self.pixels, flags=['refs_ok']):
-            element = p.item()
-
-            if tuple(element.pos) in init_grid:
-                self.centroids.append(element)
+        for p in init_grid:
+            self.centroids.append(self.pixels[p[0], p[1]])
         print('Initialization completed')
 
         # move to the lowest gradient position in a 3 × 3 neighborhood
