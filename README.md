@@ -29,3 +29,9 @@ options:
   --max-iter               maximum number of iterations
   -t, --converge-threshold if centroids move less than this value after certain iteration, then stop iterating
 ```
+
+## Example
+
+This example uses 59 centroids and 10 iterations
+
+<img src="doc/img.jpg" width="48%"> <img src="doc/output.png" width="48%">
